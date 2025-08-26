@@ -1,0 +1,59 @@
+# Hooky Configuration File
+# This file defines the git hooks setup for your project
+
+# Git hooks configuration
+# Each hook can have multiple scripts/commands that run in the specified order
+# Use either "script" for executable files or "command" for direct commands
+hooks:
+  pre-commit:
+    - name: "format-check"
+      script: "hooks/format.sh"
+      description: "Check code formatting"
+    - name: "lint"
+      script: "hooks/lint.sh" 
+      description: "Run linting checks"
+    - name: "test"
+      script: "hooks/test.sh"
+      description: "Run unit tests"
+
+  pre-push:
+    - name: "integration-tests"
+      script: "hooks/integration-tests.sh"
+      description: "Run integration tests before push"
+    - name: "go-test"
+      command: "go test ./..."
+      description: "Run Go tests directly"
+
+  commit-msg:
+    - name: "conventional-commits"
+      script: "hooks/check-commit-msg.sh"
+      description: "Validate commit message format"
+
+  pre-rebase:
+    - name: "safety-check"
+      script: "hooks/rebase-check.sh"
+      description: "Safety checks before rebase"
+
+  post-checkout:
+    - name: "dependency-check"
+      script: "hooks/deps-check.sh"
+      description: "Check if dependencies need updating"
+
+  post-merge:
+    - name: "cleanup"
+      script: "hooks/cleanup.sh"
+      description: "Clean up after merge"
+
+# Global settings
+settings:
+  # Whether to make hooks executable automatically
+  auto_executable: true
+  
+  # Whether to create backup of existing hooks
+  backup_existing: true
+  
+  # Backup directory for existing hooks
+  backup_directory: ".hooky-backup"
+  
+  # Whether to show verbose output
+  verbose: false
