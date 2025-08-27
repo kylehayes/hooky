@@ -1,9 +1,9 @@
 # 🪝 Hooky
 
-A simple, cross-platform git hooks manager that works without package managers - just like Husky and pre-commit, but even simpler.
+A simple, cross-platform git hooks manager that works without package managers - just like [Husky](https://github.com/typicode/husky) and [pre-commit](https://github.com/pre-commit/pre-commit), but even simpler.
 
-[![CI](https://github.com/yourusername/hooky/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/hooky/actions/workflows/ci.yml)
-[![Release](https://github.com/yourusername/hooky/actions/workflows/release.yml/badge.svg)](https://github.com/yourusername/hooky/actions/workflows/release.yml)
+<!-- [![CI](https://github.com/kylehayes/hooky/actions/workflows/ci.yml/badge.svg)](https://github.com/kylehayes/hooky/actions/workflows/ci.yml) -->
+<!-- [![Release](https://github.com/kylehayes/hooky/actions/workflows/release.yml/badge.svg)](https://github.com/kylehayes/hooky/actions/workflows/release.yml) -->
 
 ## ✨ Features
 
@@ -24,11 +24,11 @@ A simple, cross-platform git hooks manager that works without package managers -
 1. **Download the appropriate binary for your platform:**
    ```bash
    # Linux (amd64)
-   curl -L -o hooky.tar.gz https://github.com/yourusername/hooky/releases/latest/download/hooky-1.0.0-linux-amd64.tar.gz
+   curl -L -o hooky.tar.gz https://github.com/kylehayes/hooky/releases/latest/download/hooky-1.0.0-linux-amd64.tar.gz
    tar -xzf hooky.tar.gz && cd hooky-*
    
    # macOS (arm64 for Apple Silicon)
-   curl -L -o hooky.tar.gz https://github.com/yourusername/hooky/releases/latest/download/hooky-1.0.0-darwin-arm64.tar.gz
+   curl -L -o hooky.tar.gz https://github.com/kylehayes/hooky/releases/latest/download/hooky-1.0.0-darwin-arm64.tar.gz
    tar -xzf hooky.tar.gz && cd hooky-*
    
    # Windows (amd64)
@@ -126,36 +126,6 @@ settings:
 - **Direct commands**: Use `command` for direct commands - `go test ./...`, `fvm dart format --set-exit-if-changed lib`
 - **Multiple languages**: Use any executable script (shell, Python, Node.js, Dart, etc.)
 - **Custom organization**: Organize scripts however you want in your project
-
-### Directory Structure
-
-```
-your-project/
-├── .git/
-├── hooky.yaml          # Configuration file
-├── hooks/              # Common location for hook scripts
-│   ├── format.sh
-│   ├── lint.sh
-│   └── ...
-├── scripts/            # Alternative location
-│   ├── test.py
-│   └── build.sh
-├── tools/              # Another alternative
-│   └── integration-test.js
-├── check-root.sh       # Scripts can be anywhere
-└── ... (your project files)
-```
-
-With this structure, your configuration might look like:
-```yaml
-hooks:
-  pre-commit:
-    - script: "hooks/format.sh"                    # File in hooks/ directory
-    - script: "scripts/test.py --verbose"          # Python script with args
-    - command: "go test ./..."                     # Direct Go command
-    - command: "npm run lint"                      # npm script
-    - command: "fvm dart format --set-exit-if-changed lib" # Dart command
-```
 
 **Property Types:**
 - **script**: Executable files (with optional arguments)
@@ -448,14 +418,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Inspired by [Husky](https://typicode.github.io/husky/) and [pre-commit](https://pre-commit.com/)
 - Built with ❤️ in Go for maximum portability and performance
-
-## 📞 Support
-
-- 🐛 [Report bugs](https://github.com/yourusername/hooky/issues)
-- 💡 [Request features](https://github.com/yourusername/hooky/issues)
-- 📖 [Documentation](https://github.com/yourusername/hooky/wiki)
-- 💬 [Discussions](https://github.com/yourusername/hooky/discussions)
-
----
-
-**Made with 🪝 by the Hooky team**
